@@ -1,0 +1,32 @@
+schema-version: v2
+kind: manifest
+metadata:
+  name: teste-2023-10-bucket-teste-12
+  description: https://github.com/hyodo-stk/stk-bucket-teste-12
+  stack-version-id: 01HAW2GP1S64GNDDDTQ9JZJDMB
+  stack: python-stack@1.0.0
+spec:
+  type: infra
+  plugins:
+    - name: sandbox-hy-python/python-stack@1.0.0/s3-bucket-kms@0.0.1
+      alias: s3-bucket-kms-1695315081094
+      plugin-version-id: 01HAW2CCH073W0PWFJ3VVCYSZZ
+      stack-version-id: 01HAW2GP1S64GNDDDTQ9JZJDMB
+      type: infra
+      inputs:
+        domain: Account
+        bucket_name: s3-2023-10-bucket-teste-12
+        aws_region: sa-east-1
+        force_destroy: 'false'
+      inputs-envs: {}
+      connections:
+        generates:
+          - type: aws-s3-conn
+            selected: s3-2023-10-bucket-teste-12
+            alias: alias-s3-name
+        requires: []
+      links:
+        generates: []
+  global-inputs: {}
+  global-computed-inputs: {}
+  repository: https://github.com/hyodo-stk/stk-bucket-teste-12
